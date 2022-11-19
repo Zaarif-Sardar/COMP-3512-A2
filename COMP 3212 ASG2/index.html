@@ -4,22 +4,36 @@
    <meta charset="utf-8">
    <title></title>
    <link rel= "stylesheet" href = "index.css">
+   
 
-    <script src="JS/index.JS"></script>
 </head>
 
    <body>
       <h2>Zaarif Sardar, Simon Truong, Dan Nguyen
       </h2>
       <article id = “somethingView”>
-         <div>
+         <div id = "bSearch">
+             <form>
             <input class = "searchtype" type = "radio" id = "title" name = "s_type" ><label>Title</label>
-            <input class = "searchtype" type = "radio" id = "artist" name = "s_type" ><label>Artist</label>
-            <input class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>genre</label>
+            <input id = "aList" class = "searchtype" type = "radio" id = "artist" name = "s_type" ><label>Artist</label>
+            <input  id = "gList" class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>genre</label>
+             
+             </form>
          </div>
-         <div>
-
-         </div>
+         <div id = "browse">
+          <table>
+              <tr>
+                <th><button type = "button" class = "btn" id = "titleBtn">Title</button></th>
+                <th><button class = "btn">Artist</button></th>
+                <th><button class = "btn">Year</button></th>
+                <th><button class = "btn">Genre</button></th>
+                <th><button class = "btn">Popularity</button></th>
+              </tr>
+              
+             
+             </table>
+          
+          </div>
       </article>
    <article id = “songView” class=”hidden”>
       
@@ -27,7 +41,14 @@
    <article id = “playlistView” class=”hidden”>
       
       </article>
+        <script src="JS/artists.js"></script>
+     <script src="JS/genres.json"></script>
+    <script src="JS/sample-songs.json"></script>
+   <script src="JS/index.js"></script>
    </body>
+    <foot>
+    
+    </foot>
    
 </html>
  

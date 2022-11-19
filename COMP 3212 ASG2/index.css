@@ -1,11 +1,21 @@
-body
+#somethingView
+{
+    display: grid;
+    grid-template-columns : 20px 400px;
+}
+#browse
+{
+    background-color: green;
+}
+#bSearch
 {
     background-color: aqua;
-
 }
-h2
+table 
 {
-    padding: 200px;
+    width: 100%;
 }
+
+
 
 
