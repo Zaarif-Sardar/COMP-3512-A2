@@ -1,7 +1,12 @@
 const genre = JSON.parse(genres);
 const song = JSON.parse(songs);
+const artist = JSON.parse(artists);
 
-    const t = document.querySelector("table");
+
+forms = document.querySelector("form").appendChild(makeSelectA(artist));
+forms2 = document.querySelector("form").appendChild(makeSelectG(genre));
+
+const t = document.querySelector("table");
 
 const tr = document.createElement("tr");
 
@@ -29,9 +34,8 @@ function populateTable(songz)
         tr.appendChild(td5);
         t.appendChild(tr);
     }
-    
-
 }
+
     
 
 const btns = document.querySelector("#titleBtn");
@@ -44,6 +48,8 @@ const btns = document.querySelector("#titleBtn");
        
     });
 
+
+
 function clearTable(tr)
 {
     while(tr.hasChildNodes())
@@ -51,3 +57,31 @@ function clearTable(tr)
             tr.removeChild(tr.firstChild);
         }
 }
+
+
+function makeSelectA(artistz) {
+    const select = document.createElement("select");
+    for (let a of artistz) {
+        const option = document.createElement("option");
+        option.textContent = a.name;
+        option.setAttribute("a.name", a.id);
+        select.appendChild(option);
+    }
+    return select;
+}
+
+function makeSelectG(genrez) {
+    const select = document.createElement("select");
+    for (let g of genrez) {
+        const option = document.createElement("option");
+        option.textContent = g.name;
+        option.setAttribute("g.name", g.id);
+        select.appendChild(option);
+    }
+    return select;
+}
+
+
+
+
+
