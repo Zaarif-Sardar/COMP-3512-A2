@@ -48,6 +48,16 @@ const btns = document.querySelector("#titleBtn");
        
     });
 
+    const btns2 = document.querySelector("#artistBtn");
+    btns2.addEventListener("click", function(){
+        clearTable(tr);
+       const sortedArtist = song.sort((a,b) => a.artist.name < b.artist.name? -1:1);
+       console.log(sortedArtist);
+       
+       populateTable(sortedArtist);
+       
+    });
+
 
 
 function clearTable(tr)
