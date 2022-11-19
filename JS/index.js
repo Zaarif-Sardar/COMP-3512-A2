@@ -59,6 +59,17 @@ const btns = document.querySelector("#titleBtn");
     });
 
 
+    const btns3 = document.querySelector("#genreBtn");
+    btns3.addEventListener("click", function(){
+        clearTable(tr);
+       const sortedGenre = song.sort((a,b) => a.genre.name < b.genre.name? -1:1);
+       console.log(sortedGenre);
+       
+       populateTable(sortedGenre);
+       
+    });
+
+
 
 function clearTable(tr)
 {
