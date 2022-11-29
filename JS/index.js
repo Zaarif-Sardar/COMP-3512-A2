@@ -16,6 +16,7 @@ function populateTable(songz)
     for(s of songz)
     {
         const tr = document.createElement("tr");
+        tr.setAttribute("id", "songTr")
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
         let td3 = document.createElement("td");
@@ -34,13 +35,24 @@ function populateTable(songz)
         tr.appendChild(td5);
         t.appendChild(tr);
     }
-}
+    
+const liButton = document.querySelectorAll("#songTr");
 
+for (let li of liButton) {
+    li.addEventListener('click', function(e) {
+       let aside = document.querySelector('aside');
+        aside.classList.toggle("hidden");
+        alert("test");
+    }
+)}
+
+
+}
     
 
 const btns = document.querySelector("#titleBtn");
     btns.addEventListener("click", function(){
-        clearTable(tr);
+       
        const sortedTitle = song.sort((a,b) => a.title < b.title? -1:1);
        console.log(sortedTitle);
        
@@ -71,7 +83,7 @@ const btns = document.querySelector("#titleBtn");
 
 
 
-function clearTable(tr)
+function clearTable(table)
 {
     while(tr.hasChildNodes())
         {
@@ -101,7 +113,6 @@ function makeSelectG(genrez) {
     }
     return select;
 }
-
 
 
 
