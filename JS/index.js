@@ -2,26 +2,27 @@ const genre = JSON.parse(genres);
 const song = JSON.parse(songs);
 const artist = JSON.parse(artists);
 
-
-forms = document.querySelector("form").appendChild(makeSelectA(artist));
-forms2 = document.querySelector("form").appendChild(makeSelectG(genre));
+document.addEventListener("DOMContentLoaded", function() {
+al = document.querySelector("#artistS").appendChild(makeSelectA(artist));
+gl = document.querySelector("#genreS").appendChild(makeSelectG(genre));
 
 const t = document.querySelector("table");
 
-const tr = document.createElement("tr");
+populateTable(song);
 
-function populateTable(songz)
+
+function populateTable(song)
 {    
 
-    for(s of songz)
+    for(s of song)
     {
         const tr = document.createElement("tr");
         tr.setAttribute("id", "songTr")
-        let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
-        let td3 = document.createElement("td");
-        let td4 = document.createElement("td");
-        let td5 = document.createElement("td");
+        td1 = document.createElement("td");
+        td2 = document.createElement("td");
+        td3 = document.createElement("td");
+        td4 = document.createElement("td");
+        td5 = document.createElement("td");
         td1.textContent = s.title;
         td2.textContent = s.artist.name;
         td3.textContent = s.year;
@@ -48,48 +49,90 @@ for (let li of liButton) {
 
 
 }
-    
+const liButton = document.querySelectorAll("#songTr");
+
+for (let li of liButton) {
+    li.addEventListener('click', function(e) {
+       let aside = document.querySelector('aside');
+        aside.classList.toggle("hidden");
+        alert("test");
+    }
+)}
+    function deleteTableData(song)
+    {
+        console.log(song);
+        for(let i = 1; i <= song.length; i++)
+        {
+             t.deleteRow(1);
+        }
+    }
 
 const btns = document.querySelector("#titleBtn");
     btns.addEventListener("click", function(){
        
        const sortedTitle = song.sort((a,b) => a.title < b.title? -1:1);
-       console.log(sortedTitle);
+        deleteTableData(song);
        
        populateTable(sortedTitle);
-       
     });
 
     const btns2 = document.querySelector("#artistBtn");
     btns2.addEventListener("click", function(){
-        clearTable(tr);
        const sortedArtist = song.sort((a,b) => a.artist.name < b.artist.name? -1:1);
-       console.log(sortedArtist);
+       deleteTableData(song);
        
        populateTable(sortedArtist);
        
     });
 
-
+    
     const btns3 = document.querySelector("#genreBtn");
     btns3.addEventListener("click", function(){
-        clearTable(tr);
        const sortedGenre = song.sort((a,b) => a.genre.name < b.genre.name? -1:1);
        console.log(sortedGenre);
-       
+       deleteTableData(song);
        populateTable(sortedGenre);
        
     });
 
+    const btns4 = document.querySelector("#popBtn");
+    btns4.addEventListener("click", function(){
+        console.log(song);
+       const sortedPop = song.sort((a,b) => 
+      { if(a.details.popularity < b.details.popularity)
+       {
+        return -1;
+       }
+       if (a.details.popularity > b.details.popularity)
+       {
+        return 1;
+       }
+       
+    });
+       console.log(sortedPop);
+       deleteTableData(song);
+       populateTable(sortedPop.reverse());
+       
+    });
 
-
-function clearTable(table)
-{
-    while(tr.hasChildNodes())
-        {
-            tr.removeChild(tr.firstChild);
-        }
-}
+    const btns5 = document.querySelector("#yearBtn");
+    btns5.addEventListener("click", function(){
+        console.log(song);
+       const sortedYear = song.sort((a,b) => 
+      { if(a.year < b.year)
+       {
+        return -1;
+       }
+       if (a.year > b.year)
+       {
+        return 1;
+       }
+       
+    });
+       deleteTableData(song);
+       populateTable(sortedYear.reverse());
+       
+    });
 
 
 function makeSelectA(artistz) {
@@ -115,5 +158,5 @@ function makeSelectG(genrez) {
 }
 
 
-
+});
 

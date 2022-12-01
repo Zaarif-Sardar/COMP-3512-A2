@@ -7,29 +7,34 @@
    
 
 </head>
+<header>
+   <h1> Search for Songs </h1> 
+   <h2>Zaarif Sardar, Simon Truong, Dan Nguyen</h2>
+   <button type = "button" >PlayList</button> 
+   <button type = "button" >Credits</button>
+</header>
 
    <body>
-      <h2>Zaarif Sardar, Simon Truong, Dan Nguyen
-      </h2>
       <aside class="visible">
       <article id = “somethingView” class="visible">
          <div id = "bSearch">
              <form>
-            <input class = "searchtype" type = "radio" id = "title" name = "s_type" ><label>Title</label>
-            <input id = "aList" class = "searchtype" type = "radio" id = "artist" name = "s_type" ><label>Artist</label>
-            <input  id = "gList" class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>genre</label>
-            <input type="submit" value="Send Request" />
+               <ul>
+                  <li id = "titleS"><input class = "searchtype" type = "radio" id = "title" name = "s_type" ><label>Title</label></li>
+                  <li id = "artistS"><input id = "aList" class = "searchtype" type = "radio" id = "artist" name = "s_type" ><label>Artist</label> </li>
+                  <li id = "genreS"><input  id = "gList" class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>genre</label> </li>
+               </ul>
              
              </form>
          </div>
          <div id = "browse">
-          <table>
+          <table id = "table">
               <tr>
                 <th><button type = "button" class = "btn" id = "titleBtn">Title</button></th>
                 <th><button type = "button" class = "btn" id="artistBtn">Artist</button></th>
-                <th><button class = "btn">Year</button></th>
+                <th><button  type = "button" class = "btn" id = "yearBtn">Year</button></th>
                 <th><button type = "button" class = "btn" id="genreBtn">Genre</button></th>
-                <th><button class = "btn">Popularity</button></th>
+                <th><button  type = "button" class = "btn" id="popBtn"  >Popularity</button></th>
               </tr>
               
              

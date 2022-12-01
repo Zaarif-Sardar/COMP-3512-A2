@@ -1,15 +1,19 @@
 #somethingView
 {
-    display: grid;
-    grid-template-columns : 20px 400px;
+    display: flex;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
 }
 #browse
 {
-    background-color: green;
+    background-color: lightsalmon;
+
 }
 #bSearch
 {
-    background-color: aqua;
+    float: left;
+    background-color: lightsalmon;
 }
 table 
 {
@@ -22,6 +26,18 @@ table
 
 .visible {
     display:flex;
+}
+header
+{
+    width: 100%;
+    background-color: lightsalmon;
+    text-align: center;
+    padding: 20px;
+}
+li
+{
+    list-style: none;
+    padding: 10px;
 }
 
 
