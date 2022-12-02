@@ -15,16 +15,15 @@
 </header>
 
    <body>
-      <aside>
-
-      <article id = “somethingView”>
+      <aside class="visible">
+      <article id = “somethingView” class="visible">
          <div id = "bSearch">
-             <form method="get">
+             <form id="form">
                <ul>
-                  <li id = "titleS"><input class = "searchtype" type = "radio" id = "title" name = "title" ><label>Title</label></li><input id="searchInput" type="text" placeholder="Search">
-                  <li id = "artistS"><input id = "aList" class = "searchtype" type = "radio" id = "artist" name = "artist" ><label>Artist</label> </li>
-                  <li id = "genreS"><input  id = "gList" class = "searchtype" type = "radio" id = "genre" name = "genre" ><label>genre</label> </li>
-                  <button type="submit">Submit</button> <button id="resetFilters">Reset</button>
+                  <li id = "titleS"><input class = "searchtype" type = "text" id = "title" name = "s_type" placeholder="Search Title" ></li>
+                  <li id = "artistS"><input id = "aList" class = "searchtype" type = "radio" id = "artist" name = "s_type" ><label>Artist</label> </li>
+                  <li id = "genreS"><input  id = "gList" class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>genre</label> </li>
+                  <li><input id = "submit" type = "submit"></li>
                </ul>
              
              </form>
@@ -44,22 +43,17 @@
           
           </div>
       </article>
-
    </aside>
-   
-   
-   <article id=“songView” class="visible">
-      <h1>test</h1>
-   </article>
-
-
+   <article id = “songView” class=”hidden”>
+      
+      </article>
    <article id = “playlistView” class=”hidden”>
       
-   </article>
-      <script src="JS/artists.json"></script>
+      </article>
+        <script src="JS/artists.json"></script>
      <script src="JS/genres.json"></script>
-      <script src="JS/sample-songs.json"></script>
-      <script src="JS/index.js"></script>
+    <script src="JS/sample-songs.json"></script>
+   <script src="JS/index.js"></script>
    </body>
     <foot>
     
