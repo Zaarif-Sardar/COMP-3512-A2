@@ -7,11 +7,17 @@ fetch(url)
 .then(song2 => { 
 
     
-    
        al = document.querySelector("#artistS").appendChild(makeSelectA(artist));
         gl = document.querySelector("#genreS").appendChild(makeSelectG(genre));
         
+        
         const t = document.querySelector("table");
+
+        let reset = document.querySelector('#resetFilters');
+        reset.addEventListener("click", function() 
+        {
+            document.querySelector("form").reset();
+        });
         
         populateTable(song2);
         
@@ -40,16 +46,18 @@ fetch(url)
                 tr.appendChild(td4);
                 tr.appendChild(td5);
                 t.appendChild(tr);
+                
             }
         }
-            
+        
         const liButton = document.querySelectorAll("#songTr");
         
         for (let li of liButton) {
             li.addEventListener('click', function(e) {
                let aside = document.querySelector('aside');
                 aside.classList.toggle("hidden");
-                alert("test");
+                let songview = document.querySelector("#songView");
+                songview.classList.toggle("hidden");
             }
         )}
         
@@ -150,6 +158,8 @@ function makeSelectG(genrez) {
     }
     return select;
 }
+
+
 
         });
 

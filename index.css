@@ -18,7 +18,22 @@
 table 
 {
     width: 100%;
+    border-collapse: collapse;
+
 }
+
+.browse {
+    opacity: 0%;
+}
+
+td {
+  padding: 0.5rem 3rem;
+  font-size: 1rem;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(181, 194, 194);
+  }
 
 .hidden {
     display: none;
@@ -38,6 +53,18 @@ li
 {
     list-style: none;
     padding: 10px;
+}
+
+tr:hover
+{
+    background-color: green;
+    cursor: grab;
+}
+
+#titleSearch
+{
+    display: inline;
+    width: 20%;
 }
 
 
