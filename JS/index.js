@@ -52,11 +52,11 @@ fetch(url)
 
         for (let li of liButton) {
             li.addEventListener('click', function(e) {
-               let aside = document.querySelector('aside');
-                aside.classList.toggle("hidden");
+               let aside = document.querySelector('#somethingView');
+                aside.classList.toggle('hidden');
                 let songview = document.querySelector("#songView");
-                songview.classList.toggle("hidden");
-            }
+                songview.classList.toggle('hidden');
+        }
         )}
         
     function deleteTableData(song2)

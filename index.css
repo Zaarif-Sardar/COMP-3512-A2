@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
 }
+
 #browse
 {
     background-color: lightsalmon;
@@ -21,11 +22,6 @@ table
     border-collapse: collapse;
 
 }
-
-.browse {
-    opacity: 0%;
-}
-
 td {
   padding: 0.5rem 3rem;
   font-size: 1rem;
@@ -36,11 +32,8 @@ tr:nth-child(even) {
   }
 
 .hidden {
-    display: none;
-}
-
-.visible {
-    display:flex;
+    display: none !important; /*Something overwriting the display none attribute. 
+                                Figure out what soon as this method not very practical */
 }
 header
 {
@@ -61,11 +54,6 @@ tr:hover
     cursor: grab;
 }
 
-#titleSearch
-{
-    display: inline;
-    width: 20%;
-}
 
 
 
