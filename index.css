@@ -53,6 +53,25 @@ tr:hover
     background-color: green;
     cursor: grab;
 }
+#songView
+{
+    display: flex;
+    width: 100%;
+}
+
+#songInfo
+{
+    float:left;
+    padding: 10px;
+    margin-left: 15px;
+}
+.cardsInfo
+{
+    width: 50%;
+    background-color: aquamarine;
+    margin: 20px;
+
+}
 
 
 

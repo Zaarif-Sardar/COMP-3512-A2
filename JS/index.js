@@ -1,10 +1,12 @@
 const genre = JSON.parse(genres);
 const artist = JSON.parse(artists);
-const url = "http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php";
+const url = "https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php";
 document.addEventListener("DOMContentLoaded", function() {
 fetch(url)
 .then(resp => resp.json())
 .then(song2 => { 
+
+    
     
        al = document.querySelector("#artistS").appendChild(makeSelectA(artist));
         gl = document.querySelector("#genreS").appendChild(makeSelectG(genre));
@@ -16,17 +18,46 @@ fetch(url)
         {
             document.querySelector("form").reset();
         });
+
+        for(s of song2)
+        {
+            var tr = document.createElement("tr");
+             tr.setAttribute("id", "songTr");
+            td1 = document.createElement("td");
+            td2 = document.createElement("td");
+            td3 = document.createElement("td");
+            td4 = document.createElement("td");
+            td5 = document.createElement("td");
+            td1.textContent = s.title;
+            td2.textContent = s.artist.name;
+            td3.textContent = s.year;
+            td4.textContent = s.genre.name;
+            td5.textContent = s.details.popularity;
+            console.log(s.title);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+            t.appendChild(tr);
+            td1.setAttribute('data-id',s.song_id);
+            td2.setAttribute('data-id',s.song_id);
+            td3.setAttribute('data-id',s.song_id);
+            td4.setAttribute('data-id',s.song_id);
+            td5.setAttribute('data-id',s.song_id);
+            
+        }
+        console.log(td1.getAttribute('data-id'));
         
-        populateTable(song2);
         
-        
-        function populateTable(song)
+        function populateTable(song2)
         {    
+            
         
-            for(s of song)
+            for(s of song2)
             {
-                const tr = document.createElement("tr");
-                tr.setAttribute("id", "songTr")
+                var tr = document.createElement("tr");
+                 tr.setAttribute("id", "songTr");
                 td1 = document.createElement("td");
                 td2 = document.createElement("td");
                 td3 = document.createElement("td");
@@ -44,20 +75,71 @@ fetch(url)
                 tr.appendChild(td4);
                 tr.appendChild(td5);
                 t.appendChild(tr);
+                td1.setAttribute('data-id',s.song_id);
+                td2.setAttribute('data-id',s.song_id);
+                td3.setAttribute('data-id',s.song_id);
+                td4.setAttribute('data-id',s.song_id);
+                td5.setAttribute('data-id',s.song_id);
+                tr.setAttribute('data-id',s.song_id);
             }
+            console.log(td.getAttribute('data-id'));
+
         }
             
         const liButton = document.querySelectorAll("#songTr");
         
-
+// When user clicks a song from the table
         for (let li of liButton) {
             li.addEventListener('click', function(e) {
                let aside = document.querySelector('#somethingView');
                 aside.classList.toggle('hidden');
                 let songview = document.querySelector("#songView");
                 songview.classList.toggle('hidden');
+                let songClickedId = e.target.getAttribute('data-id');
+                console.log(e.target.nodeName);
+                console.log(songClickedId);
+                const songFound = song2.find(song => song.song_id == songClickedId);
+                console.log(songFound);
+
+                 document.querySelector("div h2").textContent = songFound.title;
+                 let artType = artist.find(a => a.name == songFound.artist.name);
+                 console.log(artType);
+                 document.querySelector("p").textContent ='BY ' + songFound.artist.name + ' - ' + artType.type;
+                 document.querySelector("#gyd").textContent = 'Genre: '+ songFound.genre.name + ', Length of song ' + songFound.details.duration;
+
+                 
+                 createSongDetails(songFound);
+                     
+                    
+               
+
+
         }
         )}
+        function createSongDetails(songs)
+        {
+                    li0 = document.querySelector('#detail0');
+                     li1 = document.querySelector('#detail1');
+                     li2 = document.querySelector('#detail2');
+                     li3 = document.querySelector('#detail3');
+                     li4 = document.querySelector('#detail4');
+                     li5 = document.querySelector('#detail5');
+                     li6 = document.querySelector('#detail6');
+                     li7 = document.querySelector('#detail7');
+
+                     li1.textContent += songs.details.bpm;
+                     li2.textContent += songs.analytics.energy;
+                     li3.textContent += songs.analytics.danceability;
+                     li4.textContent += songs.analytics.liveness;
+                     li5.textContent += songs.analytics.valence;
+                     li6.textContent += songs.analytics.acousticness;
+                     li7.textContent += songs.analytics.speechiness;
+                     li0.textContent += songs.details.popularity;
+
+
+                     
+
+        }
         
     function deleteTableData(song2)
     {
