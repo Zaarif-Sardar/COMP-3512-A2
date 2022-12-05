@@ -12,8 +12,11 @@ header h1{
     
 }
 
+
+
 #browse
 {
+   
     background-color: #5D6AA8;
     
 
@@ -58,10 +61,14 @@ li
     padding: 10px;
 }
 
-tr:hover
+#songTr:hover
 {
     background-color: #464680;
     cursor: grab;
+}
+th
+{
+    height: 30px;
 }
 #songView
 {

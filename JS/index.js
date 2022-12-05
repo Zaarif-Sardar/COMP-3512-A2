@@ -101,6 +101,11 @@ fetch(url)
                 playlist.classList.toggle('hidden');
                 let closeView1 = document.querySelector("#closeView1");
                 closeView1.classList.toggle('hidden');
+                let sHeader = document.querySelector('#sHeader');
+                let siHeader = document.querySelector('#siHeader');
+                let pHeader = document.querySelector('#pHeader');
+                sHeader.classList.toggle('hidden');
+                siHeader.classList.toggle('hidden');
 
 
            
@@ -133,6 +138,9 @@ fetch(url)
             let aside = document.querySelector('#somethingView');
             aside.classList.toggle('hidden');
             closeView1.classList.toggle('hidden');
+            sHeader.classList.toggle('hidden');
+            siHeader.classList.toggle('hidden');
+            
 
         }
     
@@ -148,6 +156,8 @@ fetch(url)
             playlistView.classList.toggle('hidden');
             let closeView2 = document.querySelector("#closeView2");
             closeView2.classList.toggle('hidden');
+            sHeader.classList.toggle('hidden');
+            pHeader.classList.toggle('hidden');
 
         }
         
@@ -160,6 +170,8 @@ fetch(url)
             let aside = document.querySelector('#somethingView');
             aside.classList.toggle('hidden');
             closeView2.classList.toggle('hidden');
+            sHeader.classList.toggle('hidden');
+            pHeader.classList.toggle('hidden');
 
         }
            )
