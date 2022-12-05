@@ -194,10 +194,13 @@ fetch(url)
 
         }
 
-        
+        // credits button showing group members names and hides after 5seconds
         document.querySelector('#credits').addEventListener("mouseover", function() {
+            popup.classList.toggle("hidden");
+            setTimeout(function () { 
             popup = document.querySelector('#popup');
             popup.classList.toggle("hidden");
+            }, 5000);
         });
         
     function deleteTableData(song2)
