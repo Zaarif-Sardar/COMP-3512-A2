@@ -317,21 +317,42 @@ function makeSelectG(genrez) {
 
 
 
-const form = document.querySelector('form')
-form.addEventListener('submit', (e) => {
-e.preventDefault();
+        const form = document.querySelector('form')
+        const radioButtons = document.querySelectorAll('input[name="s_type"]');
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let selectedButton;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    selectedButton = radioButton.value;
+                }
+                console.log(selectedButton);
+            }
+        
+        /*
+        const form = document.querySelector('form')
+            form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        
+            let title =  document.getElementById('title').value
+            console.log(title);
+        
+            const songsFound = song2.includes(title);
+            console.log(songsFound);
+        
+        
+            //if(search changed){}
+        
+            //else if
+        
+            //else if
+           */ 
+        });
+        
+        
+        
+        
+        
+                });
 
-let title =  document.getElementById('title').value
-console.log(title);
-
-});
-
-});
-
-
-
-
-
-
-
-
+        
