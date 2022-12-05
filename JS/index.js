@@ -313,22 +313,39 @@ function makeSelectG(genrez) {
     return select;
 }
 
+const form = document.querySelector('form')
+const radioButtons = document.querySelectorAll('input[name="s_type"]');
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let selectedButton;
+    for (const radioButton of radioButtons) {
+        if (radioButton.checked) {
+            selectedButton = radioButton.value;
+        }
+        console.log(selectedButton);
+    }
+
+
+    if(selectedButton == 'title'){
+        const songsFound = song2.includes(title);
+        console.log(songsFound);
+    }
+    else if (selectedButton == 'artist') {
+
+    }
+
+    else if (selectedButton == 'genre') {
+        
+    }
+
+
         });
 
 
 
-        const form = document.querySelector('form')
-        const radioButtons = document.querySelectorAll('input[name="s_type"]');
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            let selectedButton;
-            for (const radioButton of radioButtons) {
-                if (radioButton.checked) {
-                    selectedButton = radioButton.value;
-                }
-                console.log(selectedButton);
-            }
-        
+
+
+            
         /*
         const form = document.querySelector('form')
             form.addEventListener('submit', (e) => {
@@ -346,7 +363,7 @@ function makeSelectG(genrez) {
             //else if
         
             //else if
-           */ 
+           */
         });
         
         
