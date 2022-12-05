@@ -14,7 +14,8 @@
    <span id='popup' class='hidden'>Dan Nguyen, Zaarif Sardar, Simon Truong
       https://github.com/Zaarif-Sardar/COMP-3512-A2
    </span>
-   <button type = "button" class='hidden' id='closeView'>Close View</button>
+   <button type = "button" class='hidden' id='closeView1'>Close View</button>
+   <button type = "button" class='hidden' id='closeView2'>Close View</button>
 </header>
 
    <body>
@@ -73,7 +74,20 @@
    </article>
   
    <article id = 'playlistView' class='hidden'>
-      
+      <div>
+         <h2>Playlist details</h2>
+      </div>
+      <div>
+      <table id = "table">
+         <tr>
+           <th><button type = "button" class = "btn" id = "titleBtn">Title</button></th>
+           <th><button type = "button" class = "btn" id="artistBtn">Artist</button></th>
+           <th><button  type = "button" class = "btn" id = "yearBtn">Year</button></th>
+           <th><button type = "button" class = "btn" id="genreBtn">Genre</button></th>
+           <th><button  type = "button" class = "btn" id="popBtn"  >Popularity</button></th>
+         </tr>
+        </table>
+      </div>
    </article>
 
         <script src="JS/artists.json"></script>

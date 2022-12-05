@@ -99,8 +99,8 @@ fetch(url)
                 songview.classList.toggle('hidden');
                 let playlist = document.querySelector("#playlist");
                 playlist.classList.toggle('hidden');
-                let closeView = document.querySelector("#closeView");
-                closeView.classList.toggle('hidden');
+                let closeView1 = document.querySelector("#closeView1");
+                closeView1.classList.toggle('hidden');
 
 
            
@@ -122,25 +122,47 @@ fetch(url)
                  
 
                  createSongDetails(songFound);
-                     
-                    
-               
-
-
         }
+
         )}
     // When user wants to close single view page
-        closeView.addEventListener('click', function() {
+        closeView1.addEventListener('click', function() {
             playlist.classList.toggle('hidden');
             let songview = document.querySelector("#songView");
             songview.classList.toggle('hidden');
             let aside = document.querySelector('#somethingView');
             aside.classList.toggle('hidden');
-            closeView.classList.toggle('hidden');
+            closeView1.classList.toggle('hidden');
+
+        }
+    
+        
+        )
+
+        // When user clicks playlist button
+        playlist.addEventListener('click', function() {
+            playlist.classList.toggle('hidden');
+            let aside = document.querySelector('#somethingView');
+            aside.classList.toggle('hidden');
+            let playlistView = document.querySelector('#playlistView');
+            playlistView.classList.toggle('hidden');
+            let closeView2 = document.querySelector("#closeView2");
+            closeView2.classList.toggle('hidden');
 
         }
         
         )
+
+           // When user wants to close playlist view page
+           closeView2.addEventListener('click', function() {
+            playlist.classList.toggle('hidden');
+            playlistView.classList.toggle('hidden');
+            let aside = document.querySelector('#somethingView');
+            aside.classList.toggle('hidden');
+            closeView2.classList.toggle('hidden');
+
+        }
+           )
 
 
 
@@ -277,6 +299,7 @@ function makeSelectG(genrez) {
 }
 
         });
+
 
 
 const form = document.querySelector('form')

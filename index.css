@@ -74,6 +74,10 @@ tr:hover
     padding: 10px;
     margin-left: 40px;
 }
+#playlistView
+{
+    background-color: #7979DB;
+}
 .cardsInfo
 {
     width: 50%;
