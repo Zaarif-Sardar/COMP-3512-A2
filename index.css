@@ -18,10 +18,15 @@ header h1{
 {
    
     background-color: #5D6AA8;
+
     
 
 }
-
+.btn
+{
+    color: white;
+    background-color: #5D6AA8;
+}
 #bSearch
 {
     float: left;
