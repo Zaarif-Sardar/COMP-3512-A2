@@ -313,6 +313,37 @@ function makeSelectG(genrez) {
     return select;
 }
 
+
+const ctx = document.getElementById('myChart');
+new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels: ['energy', 'danceability', 'liveness', 'valence', 'acousticnes', 'speechiness'],
+    fontColor: ['#FFFFFF'],
+    datasets: [{
+      label: 'Radar Chart',
+      backgroundColor: 'rgba(00, 255, 00, 0.1)',
+      borderColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      Color: '#000000',
+      pointHoverBorderColor: 'rgb(255, 99, 132)',
+      data: [59, 76, 18, 81, 8, 23],
+      borderWidth: 2,
+
+    }]
+  },
+  options: { 
+        labels: {
+            fontColor: "blue",
+            fontSize: 18
+        }
+    }
+
+  
+});
+
+
 const form = document.querySelector('form')
 const radioButtons = document.querySelectorAll('input[name="s_type"]');
 form.addEventListener("submit", (e) => {
@@ -371,5 +402,8 @@ form.addEventListener("submit", (e) => {
         
         
                 });
+
+
+                
 
         
