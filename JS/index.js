@@ -33,6 +33,7 @@ function processSongs(data){
      reset.addEventListener("click", function() 
      {
          document.querySelector("form").reset();
+         
      });
 
      for(s of data)
@@ -402,14 +403,27 @@ const liButton = document.querySelectorAll("#songTr");
        //if searching with title
        if(selectedButton == 'title'){
            search = document.querySelector("#titleSearch");
-           console.log(search.value);
            searchInput = search.value;
-           for (d of data) {
-               if (d.includes(searchInput)) {
-                   console.log(d);
-               }
-           }
-       }
+
+           deleteTableData(data)
+           const searchFiltered = [];
+
+                let filtered = data.filter(function(e)  {
+                    return Object.values(e).some((value) => {
+                        return value.toString().includes(searchInput);
+                    });
+                });
+
+
+
+                populateTable(filtered);
+            }
+
+
+        
+        
+        
+       
    
    
        //if searching with artist and select box
