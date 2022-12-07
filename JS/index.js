@@ -359,57 +359,95 @@ const liButton = document.querySelectorAll("#songTr");
 
 
 
-function makeSelectA(artistz) {
- const select = document.createElement("select");
- for (let a of artistz) {
-     const option = document.createElement("option");
-     option.textContent = a.name;
-     option.setAttribute("a.name", a.id);
-     select.appendChild(option);
- }
- return select;
-}
-
-function makeSelectG(genrez) {
- const select = document.createElement("select");
- for (let g of genrez) {
-     const option = document.createElement("option");
-     option.textContent = g.name;
-     option.setAttribute("g.name", g.id);
-     select.appendChild(option);
- }
- return select;
-}
-
-
-
-
-
-const form = document.querySelector('form')
-const radioButtons = document.querySelectorAll('input[name="s_type"]');
-form.addEventListener("submit", (e) => {
- e.preventDefault();
- let selectedButton;
- for (const radioButton of radioButtons) {
-     if (radioButton.checked) {
-         selectedButton = radioButton.value;
-     }
-     console.log(selectedButton);
- }
-
-
- if(selectedButton == 'title'){
-     const songsFound = data.includes(title);
-     console.log(songsFound);
- }
- else if (selectedButton == 'artist') {
-
- }
-
- else if (selectedButton == 'genre') {
-     
- }
- });
+ function makeSelectA(artistz) {
+    const select = document.createElement("select");
+    select.setAttribute("id", "artistSelect");
+    for (let a of artistz) {
+        const option = document.createElement("option");
+        option.textContent = a.name;
+        option.setAttribute("a.name", a.id);
+        select.appendChild(option);
+    }
+    return select;
+   }
+   
+   function makeSelectG(genrez) {
+    const select = document.createElement("select");
+    select.setAttribute("id", "genreSelect");
+    for (let g of genrez) {
+        const option = document.createElement("option");
+        option.textContent = g.name;
+        option.setAttribute("g.name", g.id);
+        select.appendChild(option);
+    }
+    return select;
+   }
+   
+   
+   
+   
+   // form search functions
+   const form = document.querySelector('form')
+   const radioButtons = document.querySelectorAll('input[name="s_type"]');
+   form.addEventListener("submit", (e) => {
+       e.preventDefault();
+       let selectedButton;
+       for (const radioButton of radioButtons) {
+           if (radioButton.checked) {
+               selectedButton = radioButton.value;
+           }
+        console.log(selectedButton);
+       }
+   
+       //if searching with title
+       if(selectedButton == 'title'){
+           search = document.querySelector("#titleSearch");
+           console.log(search.value);
+           searchInput = search.value;
+           for (d of data) {
+               if (d.includes(searchInput)) {
+                   console.log(d);
+               }
+           }
+       }
+   
+   
+       //if searching with artist and select box
+       else if (selectedButton == 'artist') {
+           select = document.querySelector("#artistSelect");
+           console.log(select.value);
+           artistInput = select.value;
+   
+           deleteTableData(data);
+           const artistFiltered = [];
+   
+   
+           for (d of data) {
+               if (artistInput == d.artist.name) {
+                   artistFiltered.push(d);
+               }
+           }
+           populateTable(artistFiltered);
+       }
+   
+       // if searching with genre and select box
+        else if (selectedButton == 'genre') {
+           select = document.querySelector("#genreSelect");
+           console.log(select.value);
+           genreInput = select.value;
+   
+           deleteTableData(data);
+           const genreFiltered = [];
+   
+           for (d of data) {
+               if (genreInput == d.genre.name) {
+                   genreFiltered.push(d);
+               }
+           }
+       populateTable(genreFiltered);
+       }
+   
+    });
      
    
  }
