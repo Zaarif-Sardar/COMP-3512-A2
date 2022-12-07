@@ -24,10 +24,12 @@ else
     processSongs(data); 
 }
 function processSongs(data){
+    playlistData = []; 
     al = document.querySelector("#artistS").appendChild(makeSelectA(artist));
      gl = document.querySelector("#genreS").appendChild(makeSelectG(genre));
      
      const t = document.querySelector("table");
+     const t2 = document.querySelector("#table2");
 
      let reset = document.querySelector('#resetFilters');
      reset.addEventListener("click", function() 
@@ -36,35 +38,7 @@ function processSongs(data){
          
      });
 
-     for(s of data)
-     {
-         var tr = document.createElement("tr");
-          tr.setAttribute("id", "songTr");
-         td1 = document.createElement("td");
-         td2 = document.createElement("td");
-         td3 = document.createElement("td");
-         td4 = document.createElement("td");
-         td5 = document.createElement("td");
-         td1.textContent = s.title;
-         td2.textContent = s.artist.name;
-         td3.textContent = s.year;
-         td4.textContent = s.genre.name;
-         td5.textContent = s.details.popularity;
-         console.log(s.title);
-         tr.appendChild(td1);
-         tr.appendChild(td2);
-         tr.appendChild(td3);
-         tr.appendChild(td4);
-         tr.appendChild(td5);
-         t.appendChild(tr);
-         td1.setAttribute('data-id',s.song_id);
-         td2.setAttribute('data-id',s.song_id);
-         td3.setAttribute('data-id',s.song_id);
-         td4.setAttribute('data-id',s.song_id);
-         td5.setAttribute('data-id',s.song_id);
-         
-     }
-     console.log(td1.getAttribute('data-id'));
+     populateTable(data,'ADD',t);
 
      function deleteTableData(data)
  {
@@ -74,6 +48,7 @@ function processSongs(data){
           t.deleteRow(1);
      }
  }
+ const liButton = document.querySelectorAll("#songTr");
 
  const btns0 = document.querySelector("#titleBtn");
  btns0.addEventListener("click", function(){
@@ -82,7 +57,7 @@ function processSongs(data){
     const sortedTitle = data.sort((a,b) => a.title < b.title? -1:1);
      deleteTableData(data);
     
-    populateTable(sortedTitle);
+     populateTable(sortedTitle,"ADD",t);
  });
 
  const btns1 = document.querySelector("#artistBtn");
@@ -90,9 +65,9 @@ function processSongs(data){
      clearBtn();
      btns1.style.background = '#CBC3E3';
     const sortedArtist = data.sort((a,b) => a.artist.name < b.artist.name? -1:1);
-    deleteTableData(data);
+    deleteTableData(data);// maybe change
     
-    populateTable(sortedArtist);
+    populateTable(sortedArtist,"ADD",t);
     
  });
 
@@ -104,7 +79,7 @@ function processSongs(data){
     const sortedGenre = data.sort((a,b) => a.genre.name < b.genre.name? -1:1);
     console.log(sortedGenre);
     deleteTableData(data);
-    populateTable(sortedGenre);
+    populateTable(sortedGenre,"ADD",t);
     
  });
 
@@ -125,7 +100,7 @@ function processSongs(data){
  });
     console.log(sortedPop);
     deleteTableData(data);
-    populateTable(sortedPop.reverse());
+    populateTable(sortedPop.reverse(),"ADD",t);
     
  });
 
@@ -146,16 +121,20 @@ function processSongs(data){
     
  });
    deleteTableData(data);
-    populateTable(sortedYear.reverse());
-    
+   populateTable(sortedYear.reverse(),"ADD",t);
  });
 
- function populateTable(data)
+ function populateTable(stuff,option,table)
  {    
      
  
-     for(s of data)
+     for(s of stuff)
      {
+        addBtn = document.createElement("button");
+        addBtn.setAttribute('type','button');
+        addBtn.setAttribute('id', option+'Btn');
+        addBtn.setAttribute('data-id',s.song_id);
+        addBtn.textContent = option;
          var tr = document.createElement("tr");
           tr.setAttribute("id", "songTr");
          td1 = document.createElement("td");
@@ -174,7 +153,9 @@ function processSongs(data){
          tr.appendChild(td3);
          tr.appendChild(td4);
          tr.appendChild(td5);
-         t.appendChild(tr);
+         tr.appendChild(addBtn);
+
+         table.appendChild(tr);
          td1.setAttribute('data-id',s.song_id);
          td2.setAttribute('data-id',s.song_id);
          td3.setAttribute('data-id',s.song_id);
@@ -186,48 +167,106 @@ function processSongs(data){
 
  
 }
-
-
-const liButton = document.querySelectorAll("#songTr");
+     // When user clicks a song from the table to add 
      
-// When user clicks a song from the table
-     for (let li of liButton) {
-         li.addEventListener('click', function(e) {
-            
-            let aside = document.querySelector('#somethingView');
-             aside.classList.toggle('hidden');
-             let songview = document.querySelector("#songView");
-             songview.classList.toggle('hidden');
-             let playlist = document.querySelector("#playlist");
-             playlist.classList.toggle('hidden');
-             let closeView1 = document.querySelector("#closeView1");
-             closeView1.classList.toggle('hidden');
-             let sHeader = document.querySelector('#sHeader');
-             let siHeader = document.querySelector('#siHeader');
-             let pHeader = document.querySelector('#pHeader');
-             sHeader.classList.toggle('hidden');
-             siHeader.classList.toggle('hidden');
+     t.addEventListener('click', function(e) {
+        const addDiv = document.querySelector('#popUp')
+           console.log(e.target.nodeName);
+        if(e.target && e.target.nodeName == 'BUTTON' && e.target.textContent == 'ADD')
+        {
+            let song_id = e.target.getAttribute('data-id');
+            const songFound = data.find(song => song.song_id == song_id);
+            console.log(songFound);
+            playlistData.push(songFound);
+            populateTable(playlistData,"REMOVE",t2);
+            addDiv.classList.toggle('hidden2');// fix later 
+
+        }
+       
+        if(e.target && e.target.nodeName == 'TD'){
+        let aside = document.querySelector('#somethingView');
+         aside.classList.toggle('hidden');
+         let songview = document.querySelector("#songView");
+         songview.classList.toggle('hidden');
+         const playlist = document.querySelector("#playlist");
+         playlist.classList.toggle('hidden');
+         let closeView1 = document.querySelector("#closeView1");
+         closeView1.classList.toggle('hidden');
+         let sHeader = document.querySelector('#sHeader');
+         let siHeader = document.querySelector('#siHeader');
+         let pHeader = document.querySelector('#pHeader');
+         sHeader.classList.toggle('hidden');
+         siHeader.classList.toggle('hidden');
 
 
-             let songClickedId = e.target.getAttribute('data-id');
-             
-             console.log(e.target.nodeName);
-             console.log(songClickedId);
-             const songFound = data.find(song => song.song_id == songClickedId);
-             console.log(songFound);
+         let songClickedId = e.target.getAttribute('data-id');
+         
+         console.log(e.target.nodeName);
+         console.log(songClickedId);
+         const songFound = data.find(song => song.song_id == songClickedId);
+         console.log(songFound);
 
-              document.querySelector("div h2").textContent = songFound.title;
-              let artType = artist.find(a => a.name == songFound.artist.name);
-              console.log(artType);
-              document.querySelector("p").textContent ='By: ' + songFound.artist.name + ' - ' + artType.type;
-              document.querySelector("#gyd").textContent = 'Genre:'+ songFound.genre.name +  ' Duration: ' + (songFound.details.duration/60).toFixed(0) + 'm' + (songFound.details.duration%60).toFixed(0) + 's';
+          document.querySelector("div h2").textContent = songFound.title;
+          let artType = artist.find(a => a.name == songFound.artist.name);
+          console.log(artType);
+          document.querySelector("p").textContent ='By: ' + songFound.artist.name + ' - ' + artType.type;
+          document.querySelector("#gyd").textContent = 'Genre:'+ songFound.genre.name +  ' Duration: ' + (songFound.details.duration/60).toFixed(0) + 'm' + (songFound.details.duration%60).toFixed(0) + 's';
 
-              
+          
 
-              createSongDetails(songFound);
-     }
+          createSongDetails(songFound);}
+     
+ });
+ /*Code for playlist table.  */
+ t2.addEventListener('click', function(e) {
+       console.log(e.target.nodeName);
+    if(e.target && e.target.nodeName == 'BUTTON' && e.target.textContent == 'REMOVE')
+    {
+        let song_id = e.target.getAttribute('data-id');
+        const songFound = playlistData.find(song => song.song_id == song_id);
+        playlistData = playlistData.filter(song => song.song_id !== songFound.song_id);
+        console.log(playlistData);
+        deleteTableData(playlistData,t2);
+        populateTable(playlistData,"REMOVE",t2);
+    
 
-     )}
+    }
+
+    if(e.target && e.target.nodeName == 'TD'){
+    
+     let songview = document.querySelector("#songView");
+     songview.classList.toggle('hidden');
+    
+     
+     let siHeader = document.querySelector('#siHeader');
+     let pHeader = document.querySelector('#pHeader');
+     siHeader.classList.toggle('hidden');
+     pHeader.classList.toggle('hidden');
+     let closeView1 = document.querySelector("#closeView1");
+         closeView1.classList.toggle('hidden');
+
+
+
+     let songClickedId = e.target.getAttribute('data-id');
+     
+     console.log(e.target.nodeName);
+     console.log(songClickedId);
+     const songFound = data.find(song => song.song_id == songClickedId);
+     console.log(songFound);
+
+      document.querySelector("div h2").textContent = songFound.title;
+      let artType = artist.find(a => a.name == songFound.artist.name);
+      console.log(artType);
+      document.querySelector("p").textContent ='By: ' + songFound.artist.name + ' - ' + artType.type;
+      document.querySelector("#gyd").textContent = 'Genre:'+ songFound.genre.name +  ' Duration: ' + (songFound.details.duration/60).toFixed(0) + 'm' + (songFound.details.duration%60).toFixed(0) + 's';
+
+      
+
+      createSongDetails(songFound);}
+ 
+});
+
+
  // When user wants to close single view page
      closeView1.addEventListener('click', function() {
          playlist.classList.toggle('hidden');
@@ -416,7 +455,7 @@ const liButton = document.querySelectorAll("#songTr");
 
 
 
-                populateTable(filtered);
+                populateTable(filtered,"ADD",t);
             }
 
 
@@ -441,7 +480,7 @@ const liButton = document.querySelectorAll("#songTr");
                    artistFiltered.push(d);
                }
            }
-           populateTable(artistFiltered);
+           populateTable(artistFiltered,"ADD",t);
        }
    
        // if searching with genre and select box
@@ -458,7 +497,7 @@ const liButton = document.querySelectorAll("#songTr");
                    genreFiltered.push(d);
                }
            }
-       populateTable(genreFiltered);
+       populateTable(genreFiltered,"ADD",t);
        }
    
     });

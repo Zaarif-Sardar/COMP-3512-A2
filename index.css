@@ -87,7 +87,7 @@ th
     padding: 10px;
     margin-left: 40px;
 }
-#playlistView
+#popUp + div
 {
     background-color: #7979DB;
 }
@@ -96,6 +96,23 @@ th
     width: 50%;
     background-color: #7979DB;
     margin: 20px;
+
+}
+#popUp
+{
+    display: flex;
+    padding: 50px;
+    background-color: lightskyblue;
+    color: white;
+    border-radius: 5%;
+    width: 150px;
+    text-align: center;
+    margin-left: 50%;
+}
+
+.hidden2
+{
+   visibility: hidden;
 
 }
 
