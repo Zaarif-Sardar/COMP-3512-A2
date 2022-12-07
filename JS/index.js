@@ -38,7 +38,8 @@ function processSongs(data){
          
      });
 
-     populateTable(data,'ADD',t);
+     const sortedTitle = data.sort((a,b) => a.title < b.title? -1:1);
+     populateTable(sortedTitle,'ADD',t);
 
      function deleteTableData(data)
  {
