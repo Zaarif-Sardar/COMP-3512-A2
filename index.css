@@ -9,18 +9,26 @@
 header h1{
     float:left;
     color:white;
-    
+
 }
 
 
 
 #browse
 {
-   
+
     background-color: #5D6AA8;
+    height: 500px;
+overflow-y: scroll;
 
-    
+}
 
+aside {
+    height: 100%;
+}
+
+body {
+    height;: 100%;
 }
 .btn
 {
@@ -50,8 +58,8 @@ tr:nth-child(even) {
   }
 
 .hidden {
-    display: none !important; /*Something overwriting the display none attribute. 
-                                Figure out what soon as this method not very practical */
+    display: none !important; /Something overwriting the display none attribute. 
+                                Figure out what soon as this method not very practical/
 }
 header
 {
@@ -115,7 +123,3 @@ th
    visibility: hidden;
 
 }
-
-
-
-
