@@ -296,40 +296,38 @@ const liButton = document.querySelectorAll("#songTr");
                   li7.textContent = ("Speechiness: " + songs.analytics.speechiness);
                   li0.textContent = ("Popularity: " + songs.details.popularity);
 
-                  const ctx = document.getElementById('myChart');
-                  new Chart(ctx, {
-                    type: 'radar',
-                    data: {
-                      labels: ['energy', 'danceability', 'liveness', 'valence', 'acousticnes', 'speechiness'],
-                      fontColor: ['#FFFFFF'],
-                      datasets: [{
-                        label: 'Radar Chart',
-                        backgroundColor: 'rgba(00, 255, 00, 0.1)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        Color: '#000000',
-                        pointHoverBorderColor: 'rgb(255, 99, 132)',
-                        data: [songs.analytics.energy, songs.analytics.danceability, songs.analytics.liveness, songs.analytics.valence, songs.analytics.acousticness, songs.analytics.speechiness],
-                        borderWidth: 2,
-                  
-                      }]
-                    },
-                    options: { 
-                          labels: {
-                              fontColor: "blue",
-                              fontSize: 18
-                          }
+                  let chartStatus = Chart.getChart("myChart"); 
+                  if (chartStatus != undefined) {
+                  chartStatus.destroy();
                       }
-                  
-                    
-                  });
-        
 
 
-                   
+                const ctx = document.getElementById('myChart');
+               const oldChart = new Chart(ctx, {
+                  type: 'radar',
+                  data: {
+                    labels: ['energy', 'danceability', 'liveness', 'valence', 'acousticnes', 'speechiness'],
+                    fontColor: ['#FFFFFF'],
+                    datasets: [{
+                      label: 'Radar Chart',
+                      backgroundColor: 'rgba(00, 255, 00, 0.1)',
+                      borderColor: 'rgb(255, 99, 132)',
+                      pointBorderColor: '#fff',
+                      pointHoverBackgroundColor: '#fff',
+                      Color: '#000000',
+                      pointHoverBorderColor: 'rgb(255, 99, 132)',
+                      data: [songs.analytics.energy, songs.analytics.danceability, songs.analytics.liveness, songs.analytics.valence, songs.analytics.acousticness, songs.analytics.speechiness],
+                      borderWidth: 2,
 
-     }
+                    }]
+                  }
+
+
+
+                });
+
+
+   }
 
      // credits button showing group members names and hides after 5seconds
      document.querySelector('#credits').addEventListener("mouseover", function() {
