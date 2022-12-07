@@ -403,14 +403,14 @@ const liButton = document.querySelectorAll("#songTr");
        //if searching with title
        if(selectedButton == 'title'){
            search = document.querySelector("#titleSearch");
-           searchInput = search.value;
+           searchInput = search.value.toLowerCase();
 
            deleteTableData(data)
            const searchFiltered = [];
 
                 let filtered = data.filter(function(e)  {
                     return Object.values(e).some((value) => {
-                        return value.toString().includes(searchInput);
+                        return value.toString().toLowerCase().includes(searchInput);
                     });
                 });
 
