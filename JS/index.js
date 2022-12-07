@@ -181,6 +181,11 @@ function processSongs(data){
             populateTable(playlistData,"REMOVE",t2);
             addDiv.classList.toggle('hidden2');// fix later 
 
+            setTimeout(function () { 
+                popup = document.querySelector('#popup');
+                addDiv.classList.toggle("hidden2");
+                }, 1000);
+
         }
        
         if(e.target && e.target.nodeName == 'TD'){
