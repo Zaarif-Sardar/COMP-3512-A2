@@ -46,7 +46,7 @@ function processSongs(data){
      console.log(data);
      for(let i = 1; i <= data.length; i++)
      {
-          t.deleteRow(1);
+          t2.deleteRow(1);
      }
  }
  const liButton = document.querySelectorAll("#songTr");
@@ -179,7 +179,7 @@ function processSongs(data){
             console.log(songFound);
             playlistData.push(songFound);
             populateTable(playlistData,"REMOVE",t2);
-            playlistData = [];
+           // playlistData = [];
             addDiv.classList.toggle("hidden2");
 
             setTimeout(function () { 
@@ -188,6 +188,8 @@ function processSongs(data){
                 }, 1000);
 
         }
+
+        
        
         if(e.target && e.target.nodeName == 'TD'){
         let aside = document.querySelector('#somethingView');
@@ -235,18 +237,9 @@ function processSongs(data){
         songToDel = playlistData.indexOf(song_id);
 
 
+        deleteTableData(songToDel);
 
 
-        for (let p of playlistData) {
-            console.log("hello");
-        }
-        console.log(songToDel);
-        t2.deleteRow(songToDel);
-        //const songFound = playlistData.find(song => song.song_id == song_id);
-       // playlistData = playlistData.filter(song => song.song_id !== songFound.song_id);
-       // console.log(playlistData);
-        //deleteTableData(playlistData,t2);
-        //populateTable(playlistData,"REMOVE",t2);
         
     
 
@@ -264,6 +257,8 @@ function processSongs(data){
      pHeader.classList.toggle('hidden');
      let closeView1 = document.querySelector("#closeView1");
          closeView1.classList.toggle('hidden');
+         closeView2.classList.toggle('hidden');
+         playlistView.classList.toggle('hidden');
 
 
 
@@ -447,9 +442,10 @@ function processSongs(data){
    
    
    // form search functions
-   const form = document.querySelector('form')
+   const submitBtn = document.querySelector('#submitBtn')
+
    const radioButtons = document.querySelectorAll('input[name="s_type"]');
-   form.addEventListener("submit", (e) => {
+   submitBtn.addEventListener("click", (e) => {
        e.preventDefault();
        let selectedButton;
        for (const radioButton of radioButtons) {
