@@ -134,8 +134,7 @@ tr:nth-child(even) {
 
 
 .hidden {
-    display: none !important; /Something overwriting the display none attribute. 
-                                Figure out what soon as this method not very practical/
+    display: none !important; 
 }
 header
 {
@@ -224,4 +223,12 @@ option {
 
 input.searchtype {
     color: #7979DB;
+}
+#songDetialList
+{
+    width: 100%;
+}
+#songDetialList li
+{
+    background-color:#6B0F9C;
 }

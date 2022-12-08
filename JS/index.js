@@ -342,6 +342,16 @@ function processSongs(data){
                   li6 = document.querySelector('#detail6');
                   li7 = document.querySelector('#detail7');
 
+                  li0.style.width = songs.details.bpm + "%" ;
+                  li1.style.width = songs.analytics.energy + "%" ;
+                  li2.style.width = songs.analytics.danceability + "%" ;
+                  li3.style.width = songs.analytics.liveness + "%" ;
+                  li4.style.width = songs.analytics.valence + "%" ;
+                  li5.style.width = songs.analytics.acousticness + "%" ;
+                  li6.style.width = songs.analytics.speechiness + "%" ;
+                  li7.style.width = songs.details.popularity + "%" ;
+
+
               
                   li1.textContent = ("BPM: " + songs.details.bpm);
                   li2.textContent = ("Energy: " + songs.analytics.energy);
