@@ -25,6 +25,7 @@ else
 }
 function processSongs(data){
     playlistData = []; 
+    addToPlaylist = [];
     al = document.querySelector("#artistS").appendChild(makeSelectA(artist));
      gl = document.querySelector("#genreS").appendChild(makeSelectG(genre));
      
@@ -37,10 +38,9 @@ function processSongs(data){
          document.querySelector("form").reset();
          
      });
-
      const sortedTitle = data.sort((a,b) => a.title < b.title? -1:1);
      populateTable(sortedTitle,'ADD',t);
-
+     
      function deleteTableData(data)
  {
      console.log(data);
@@ -148,7 +148,6 @@ function processSongs(data){
          td3.textContent = s.year;
          td4.textContent = s.genre.name;
          td5.textContent = s.details.popularity;
-         console.log(s.title);
          tr.appendChild(td1);
          tr.appendChild(td2);
          tr.appendChild(td3);
@@ -180,7 +179,8 @@ function processSongs(data){
             console.log(songFound);
             playlistData.push(songFound);
             populateTable(playlistData,"REMOVE",t2);
-            addDiv.classList.toggle('hidden2');// fix later 
+            playlistData = [];
+            addDiv.classList.toggle("hidden2");
 
             setTimeout(function () { 
                 popup = document.querySelector('#popup');
@@ -207,7 +207,7 @@ function processSongs(data){
 
          let songClickedId = e.target.getAttribute('data-id');
          
-         console.log(e.target.nodeName);
+
          console.log(songClickedId);
          const songFound = data.find(song => song.song_id == songClickedId);
          console.log(songFound);
@@ -225,15 +225,29 @@ function processSongs(data){
  });
  /*Code for playlist table.  */
  t2.addEventListener('click', function(e) {
-       console.log(e.target.nodeName);
+    
     if(e.target && e.target.nodeName == 'BUTTON' && e.target.textContent == 'REMOVE')
     {
         let song_id = e.target.getAttribute('data-id');
-        const songFound = playlistData.find(song => song.song_id == song_id);
-        playlistData = playlistData.filter(song => song.song_id !== songFound.song_id);
+
         console.log(playlistData);
-        deleteTableData(playlistData,t2);
-        populateTable(playlistData,"REMOVE",t2);
+
+        songToDel = playlistData.indexOf(song_id);
+
+
+
+
+        for (let p of playlistData) {
+            console.log("hello");
+        }
+        console.log(songToDel);
+        t2.deleteRow(songToDel);
+        //const songFound = playlistData.find(song => song.song_id == song_id);
+       // playlistData = playlistData.filter(song => song.song_id !== songFound.song_id);
+       // console.log(playlistData);
+        //deleteTableData(playlistData,t2);
+        //populateTable(playlistData,"REMOVE",t2);
+        
     
 
     }
@@ -509,26 +523,5 @@ function processSongs(data){
     });
      
    
- }
-
-
-            
-        /*
-        const form = document.querySelector('form')
-            form.addEventListener('submit', (e) => {
-            e.preventDefault();
-        
-            let title =  document.getElementById('title').value
-            console.log(title);
-        
-            const songsFound = song2.includes(title);
-            console.log(songsFound);
-        
-        
-            //if(search changed){}
-        
-            //else if
-        
-            //else if
-           */
+}
         });
