@@ -10,7 +10,7 @@
 
 </head>
 <header>
-   <h1 id='sHeader'> Search for Songs </h1> 
+   <h1 id='sHeader'> Browse </h1> 
    <h1 class='hidden' id='pHeader'> Playlist </h1>
    <h1 class='hidden' id='siHeader'> Song Information </h1>
    <button type = 'button' id='playlist'>PlayList</button> 
@@ -18,8 +18,8 @@
  
    <button type = "button" class='hidden' id='closeView1'>Close View</button>
    <button type = "button" class='hidden' id='closeView2'>Close View</button>
-   <span id='popup' class='hidden'> Dan Nguyen, Zaarif Sardar, Simon Truong<br>
-      <a href="https://github.com/Zaarif-Sardar/COMP-3512-A2">github link</a>
+   <span id='popup' class='hidden'> Dan Nguyen, Zaarif Sardar, Simon Truong <br>
+      <a href="https://github.com/Zaarif-Sardar/COMP-3512-A2">GitHub Page</a>
    </span>
 </header>
 
@@ -27,17 +27,20 @@
       <aside>
          <div id="popUp" class = "hidden2">Added!</div>
       <article id = 'somethingView'>
-         <div id = "bSearch">
+         <div id = "bSearch" class='panels'>
+            <div class='panel panel1'>
+               <h1>Search for Songs</h1>
+        
              <form method="get" id="form">
                <ul>
-                  <li id = "titleS"><input id="tList" value="title" class="searchtype" type="radio" id = "title" name="s_type" checked /><input class = "searchtype" type = "text" id = "titleSearch" name = "s_type" placeholder="Search Title"></li>
+                  <li id = "titleS"><input id="tList" value="title" class="searchtype" type="radio" id = "title" name="s_type" checked /><label>Title </label><input class = "searchtype" type = "text" id = "titleSearch" name = "s_type" placeholder="Search Title"></li>
                   <li id = "artistS"><input id = "aList" value="artist" class = "searchtype" type = "radio" id = "artist" name = "s_type" ><label>Artist</label> </li>
-                  <li id = "genreS"><input  id = "gList" value="genre"  class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>genre</label> </li>
+                  <li id = "genreS"><input  id = "gList" value="genre"  class = "searchtype" type = "radio" id = "genre" name = "s_type" ><label>Genre</label> </li>
                   <button type="submit" id="submitBtn" >Submit</button> <button id="resetFilters">Reset</button>
                </ul>
              
              </form>
-         </div>
+
          <div id = "browse">
           <table id = "table"  id = 'table1'>
               <tr>
