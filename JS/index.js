@@ -41,13 +41,9 @@ function processSongs(data){
      const sortedTitle = data.sort((a,b) => a.title < b.title? -1:1);
      populateTable(sortedTitle,'ADD',t);
      
-     function deleteTableData(data)
+     function deleteTableData2(stuff)
  {
-     console.log(data);
-     for(let i = 1; i <= data.length; i++)
-     {
-          t2.deleteRow(1);
-     }
+     t2.deleteRow(stuff);
  }
  const liButton = document.querySelectorAll("#songTr");
 
@@ -138,6 +134,8 @@ function processSongs(data){
         addBtn.textContent = option;
          var tr = document.createElement("tr");
           tr.setAttribute("id", "songTr");
+          tr.row
+          
          td1 = document.createElement("td");
          td2 = document.createElement("td");
          td3 = document.createElement("td");
@@ -161,6 +159,7 @@ function processSongs(data){
          td3.setAttribute('data-id',s.song_id);
          td4.setAttribute('data-id',s.song_id);
          td5.setAttribute('data-id',s.song_id);
+         addBtn.setAttribute('data-row',tr.rowIndex);
          tr.setAttribute('data-id',s.song_id);
      }
 
@@ -174,12 +173,15 @@ function processSongs(data){
            console.log(e.target.nodeName);
         if(e.target && e.target.nodeName == 'BUTTON' && e.target.textContent == 'ADD')
         {
-            let song_id = e.target.getAttribute('data-id');
-            const songFound = data.find(song => song.song_id == song_id);
-            console.log(songFound);
+            let songId = e.target.getAttribute('data-id');
+            console.log(songId);
+          let songFound = data.find(song => song.song_id == songId);
+          
+            
+            console.log("This is songfound test" + songFound);
             playlistData.push(songFound);
             populateTable(playlistData,"REMOVE",t2);
-           // playlistData = [];
+            playlistData = [];
             addDiv.classList.toggle("hidden2");
 
             setTimeout(function () { 
@@ -230,16 +232,20 @@ function processSongs(data){
     
     if(e.target && e.target.nodeName == 'BUTTON' && e.target.textContent == 'REMOVE')
     {
-        let song_id = e.target.getAttribute('data-id');
+        let rowNum = e.target.getAttribute('data-row');
+        console.log("row Num" + rowNum);
+/*        console.log("This is song id:" + songId);
 
-        console.log(playlistData);
+        console.log("This is playlist:" + playlistData);
+        console.log("Wat is the length"+ playlistData.length);
+        songToDel = playlistData.findIndex(song => song.song_id == songId);
 
-        songToDel = playlistData.indexOf(song_id);
+        console.log("Index of" + songToDel);
 
+*/
+        deleteTableData2(rowNum);
 
-        deleteTableData(songToDel);
-
-
+        
         
     
 
