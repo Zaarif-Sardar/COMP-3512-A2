@@ -16,6 +16,7 @@ header h1{
 header button {
     display:inline-block;
     float:right;
+    
 
     
 }
@@ -24,6 +25,7 @@ header button:active {
     background-color: #c9c9c9;
 
     transform: translateY(3px);
+    
 
 }
 
@@ -120,6 +122,8 @@ header
     background-color: #465080;
     text-align: center;
     padding: 40px;
+    box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
+    
 }
 
 li
