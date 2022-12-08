@@ -45,8 +45,11 @@ function processSongs(data){
  {
      t2.deleteRow(stuff);
  }
+
+ 
  const liButton = document.querySelectorAll("#songTr");
 
+ // button on click sorts title
  const btns0 = document.querySelector("#titleBtn");
  btns0.addEventListener("click", function(){
      clearBtn();
@@ -56,7 +59,7 @@ function processSongs(data){
     
      populateTable(sortedTitle,"ADD",t);
  });
-
+// button on click sorts artist
  const btns1 = document.querySelector("#artistBtn");
  btns1.addEventListener("click", function(){
      clearBtn();
@@ -68,7 +71,7 @@ function processSongs(data){
     
  });
 
- 
+ // button on click sorts genre
  const btns2 = document.querySelector("#genreBtn");
  btns2.addEventListener("click", function(){
      clearBtn();
@@ -79,7 +82,7 @@ function processSongs(data){
     populateTable(sortedGenre,"ADD",t);
     
  });
-
+// button on click sorts by popularity
  const btns3 = document.querySelector("#popBtn");
  btns3.addEventListener("click", function(){
      clearBtn();
@@ -100,7 +103,7 @@ function processSongs(data){
     populateTable(sortedPop.reverse(),"ADD",t);
     
  });
-
+// button on click sorts by year
  const btns4 = document.querySelector("#yearBtn");
  btns4.addEventListener("click", function(){
      clearBtn();
@@ -120,7 +123,7 @@ function processSongs(data){
    deleteTableData(data);
    populateTable(sortedYear.reverse(),"ADD",t);
  });
-
+// makes and set attributes to table
  function populateTable(stuff,option,table)
  {    
      
@@ -192,7 +195,7 @@ function processSongs(data){
         }
 
         
-       
+       // finds the target table cell and get the song name to get it's values
         if(e.target && e.target.nodeName == 'TD'){
         let aside = document.querySelector('#somethingView');
          aside.classList.toggle('hidden');
@@ -234,15 +237,7 @@ function processSongs(data){
     {
         let rowNum = e.target.getAttribute('data-row');
         console.log("row Num" + rowNum);
-/*        console.log("This is song id:" + songId);
 
-        console.log("This is playlist:" + playlistData);
-        console.log("Wat is the length"+ playlistData.length);
-        songToDel = playlistData.findIndex(song => song.song_id == songId);
-
-        console.log("Index of" + songToDel);
-
-*/
         deleteTableData2(rowNum);
 
         
@@ -335,7 +330,7 @@ function processSongs(data){
         )
 
 
-
+     // creates the single songe page's list of information using it's values and make a radar chart for the song aswell
      function createSongDetails(songs)
      {
                  li0 = document.querySelector('#detail0');
@@ -398,7 +393,8 @@ function processSongs(data){
          popup.classList.toggle("hidden");
          }, 5000);
      });
-     
+
+// function to delete table
  function deleteTableData(data)
  {
      console.log(data);
@@ -407,6 +403,8 @@ function processSongs(data){
           t.deleteRow(1);
      }
  }
+
+ 
  function clearBtn()
  {
      const btns = document.querySelectorAll(".btn");
@@ -419,7 +417,7 @@ function processSongs(data){
 
 
 
-
+// make the select menu and append options to the select with all artists name
  function makeSelectA(artistz) {
     const select = document.createElement("select");
     select.setAttribute("id", "artistSelect");
@@ -431,7 +429,7 @@ function processSongs(data){
     }
     return select;
    }
-   
+   // make the genre select menu and append options to the select with all types of genres
    function makeSelectG(genrez) {
     const select = document.createElement("select");
     select.setAttribute("id", "genreSelect");
